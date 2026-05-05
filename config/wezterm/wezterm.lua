@@ -1,4 +1,14 @@
 local wezterm = require("wezterm")
+
+wezterm.on("update-right-status", function(window, pane)
+	local domain_name = window:active_domain()
+
+	window:set_right_status(wezterm.format({
+		{ Foreground = { AnsiColor = "Green" } },
+		{ Text = " 🌐 Domain: " .. domain_name .. "  " },
+	}))
+end)
+
 local config = {}
 
 config.font = wezterm.font("JetBrainsMonoHangul Nerd Font")
