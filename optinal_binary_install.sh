@@ -77,6 +77,7 @@ fi
 
 if [ ! -f "$PWD/bin/nvim" ]; then
   $EGET neovim/neovim-releases
+  mv $PWD/nvim-* $PWD/nvim
   echo "------------------------------------------------------------------------------------------------"
 fi
 
