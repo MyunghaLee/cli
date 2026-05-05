@@ -1,6 +1,9 @@
-if not test -f $HOME/.homebrew/bin/brew
-  git clone https://github.com/Homebrew/brew.git
-  ln -sf $PWD/brew $HOME/.homebrew
-end
+#!/usr/bin/bash
 
-$HOME/.homebrew/bin/brew bundle
+if [ ! -f "$HOME/.homebrew/bin/brew" ]; then
+  mkdir -p "$HOME/.homebrew"
+  git clone https://github.com/Homebrew/brew.git "$HOME/.homebrew/bin/brew_repo"
+  ln -sf "$HOME/.homebrew/bin/brew_repo/bin/brew" "$HOME/.homebrew/bin/brew"
+fi
+
+"$HOME/.homebrew/bin/brew" bundle
