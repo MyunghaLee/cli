@@ -38,6 +38,11 @@ config.unix_domains = {
 	},
 }
 
-config.ssh_domains = require("ssh")
+local status, ssh_config = pcall(require, "ssh")
+if status then
+	config.ssh_domains = ssh_config
+else
+	config.ssh_domains = {}
+end
 
 return config
