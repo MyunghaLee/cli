@@ -76,8 +76,8 @@ if [ ! -f "$PWD/bin/lazygit" ]; then
 fi
 
 if [ ! -f "$PWD/bin/nvim" ]; then
-  $EGET neovim/neovim-releases
-  mv $PWD/nvim-* $PWD/nvim
+  $EGET neovim/neovim-releases --to $PWD/bin
+  mv $PWD/bin/nvim-* $PWD/bin/nvim
   echo "------------------------------------------------------------------------------------------------"
 fi
 
