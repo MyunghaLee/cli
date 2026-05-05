@@ -11,6 +11,9 @@ config.window_padding = {
 	left = 16,
 }
 
+config.initial_cols = 120
+config.initial_rows = 30
+
 config.default_cursor_style = "SteadyBar"
 
 config.scrollback_lines = 10000
@@ -34,6 +37,7 @@ config.unix_domains = {
 		name = "localhost",
 	},
 }
+
 config.ssh_domains = require("ssh")
 
 return config
