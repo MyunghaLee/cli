@@ -28,7 +28,7 @@ config.visual_bell = {
 
 config.window_decorations = "NONE"
 
-config.default_prog = { "bash", "--login", "-c", "exec fish" }
+config.default_prog = { "bash", "--login", "-c", "exec ~/.local/bin/fish" }
 
 config.color_scheme = "Vs Code Dark+ (Gogh)"
 
