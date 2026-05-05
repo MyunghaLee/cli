@@ -76,7 +76,7 @@ if [ ! -f "$PWD/bin/lazygit" ]; then
 fi
 
 if [ ! -f "$PWD/bin/nvim" ]; then
-  $EGET neovim/neovim --asset="$ARCH" --to $PWD/bin --tag "v0.8.0"
+  $EGET neovim/neovim-releases
   echo "------------------------------------------------------------------------------------------------"
 fi
 
