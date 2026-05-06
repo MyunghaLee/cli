@@ -1,13 +1,13 @@
 local wezterm = require("wezterm")
 
-wezterm.on("update-right-status", function(window, pane)
-	local domain_name = window:active_domain()
-
-	window:set_right_status(wezterm.format({
-		{ Foreground = { AnsiColor = "Green" } },
-		{ Text = " 🌐 Domain: " .. domain_name .. "  " },
-	}))
-end)
+-- wezterm.on("update-right-status", function(window, pane)
+-- 	local domain_name = window:active_domain()
+--
+-- 	window:set_right_status(wezterm.format({
+-- 		{ Foreground = { AnsiColor = "Green" } },
+-- 		{ Text = " 🌐 Domain: " .. domain_name .. "  " },
+-- 	}))
+-- end)
 
 local config = {}
 
@@ -21,8 +21,8 @@ config.window_padding = {
 	left = 16,
 }
 
-config.initial_cols = 160
-config.initial_rows = 48
+config.initial_cols = 120
+config.initial_rows = 36
 
 config.default_cursor_style = "SteadyBar"
 
