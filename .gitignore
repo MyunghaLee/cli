@@ -1,4 +1,5 @@
 /bin
 /Homebrew/brew
 /config/fish/fish_variables
+/config/fish/local_config.fish
 /config/wezterm/ssh.lua
