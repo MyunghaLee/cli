@@ -11,7 +11,11 @@ vim.g.clipboard = {
     ["*"] = require("vim.ui.clipboard.osc52").copy("*"),
   },
   paste = {
-    ["+"] = require("vim.ui.clipboard.osc52").paste("+"),
-    ["*"] = require("vim.ui.clipboard.osc52").paste("*"),
+    ["+"] = function()
+      return { vim.fn.getreg("+"), vim.fn.getregtype("+") }
+    end,
+    ["*"] = function()
+      return { vim.fn.getreg("*"), vim.fn.getregtype("*") }
+    end,
   },
 }
