@@ -26,10 +26,10 @@ if [ ! -f "$PWD/bin/fish" ]; then
   echo "------------------------------------------------------------------------------------------------"
 fi
 
-if [ ! -f "$PWD/bin/wezterm" ]; then
-  $EGET --to $PWD/bin wezterm/wezterm --asset Image --asset ^zsync
-  echo "------------------------------------------------------------------------------------------------"
-fi
+# if [ ! -f "$PWD/bin/wezterm" ]; then
+#   $EGET --to $PWD/bin wezterm/wezterm --asset Image --asset ^zsync
+#   echo "------------------------------------------------------------------------------------------------"
+# fi
 
 mkdir -p $HOME/.local/bin
 ln -sf $PWD/bin/* $HOME/.local/bin
