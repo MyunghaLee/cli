@@ -1,13 +1,13 @@
 local wezterm = require("wezterm")
 
--- wezterm.on("update-right-status", function(window, pane)
--- 	local domain_name = window:active_domain()
---
--- 	window:set_right_status(wezterm.format({
--- 		{ Foreground = { AnsiColor = "Green" } },
--- 		{ Text = " 🌐 Domain: " .. domain_name .. "  " },
--- 	}))
--- end)
+wezterm.on("format-tab-title", function(tab)
+	local pane = tab.active_pane
+	local title = pane.title
+	if pane.domain_name then
+		title = title .. " (" .. pane.domain_name .. ")"
+	end
+	return title
+end)
 
 local config = {}
 
