@@ -4,7 +4,9 @@ wezterm.on("format-tab-title", function(tab)
 	local pane = tab.active_pane
 	local title = pane.title
 	if pane.domain_name then
-		title = title .. " (" .. pane.domain_name .. ")"
+		-- title = title .. " (" .. pane.domain_name .. ")"
+		-- title = pane.domain_name
+		title = title
 	end
 	return title
 end)
@@ -37,7 +39,7 @@ config.visual_bell = {
 }
 
 config.window_decorations = "NONE"
-config.tab_bar_at_bottom = true
+config.tab_bar_at_bottom = false
 config.use_fancy_tab_bar = true
 
 config.default_prog = { "bash", "--login", "-c", "exec ~/.local/bin/fish" }
