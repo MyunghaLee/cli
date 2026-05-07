@@ -37,6 +37,8 @@ config.visual_bell = {
 }
 
 config.window_decorations = "NONE"
+config.tab_bar_at_bottom = true
+config.use_fancy_tab_bar = true
 
 config.default_prog = { "bash", "--login", "-c", "exec ~/.local/bin/fish" }
 
