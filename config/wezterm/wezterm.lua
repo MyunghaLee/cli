@@ -5,8 +5,7 @@ wezterm.on("format-tab-title", function(tab)
 	local title = pane.title
 	if pane.domain_name then
 		-- title = title .. " (" .. pane.domain_name .. ")"
-		-- title = pane.domain_name
-		title = title
+		title = " " .. pane.domain_name .. " "
 	end
 	return title
 end)
@@ -17,7 +16,7 @@ config.font = wezterm.font("JetBrainsMonoHangul Nerd Font")
 config.font_size = 14.0
 
 config.window_padding = {
-	top = 8,
+	top = 16,
 	right = 16,
 	bottom = 0,
 	left = 16,
@@ -39,8 +38,8 @@ config.visual_bell = {
 }
 
 config.window_decorations = "NONE"
-config.tab_bar_at_bottom = false
-config.use_fancy_tab_bar = true
+config.tab_bar_at_bottom = true
+config.use_fancy_tab_bar = false
 
 config.default_prog = { "bash", "--login", "-c", "exec ~/.local/bin/fish" }
 
