@@ -16,10 +16,10 @@ config.font = wezterm.font("JetBrainsMonoHangul Nerd Font")
 config.font_size = 14.0
 
 config.window_padding = {
-	top = 16,
-	right = 16,
+	top = 15,
+	right = 15,
 	bottom = 0,
-	left = 16,
+	left = 15,
 }
 
 config.initial_cols = 160
