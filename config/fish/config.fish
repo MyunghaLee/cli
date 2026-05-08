@@ -41,9 +41,25 @@ set -g fish_greeting
 set -gx RIPGREP_CONFIG_PATH "$HOME/.config/ripgrep/config"
 
 fish_vi_key_bindings
-bind -M insert ctrl-backspace backward-kill-path-component
-bind -M visual \x20y 'fish_clipboard_copy; commandline -f end-selection repaint-mode'
-bind -M default \x20p 'set -g fish_cursor_end_mode exclusive' forward-char 'set -g fish_cursor_end_mode inclusive' fish_clipboard_paste
+# bind -M insert ctrl-backspace backward-kill-path-component
+# bind -M visual \x20y 'fish_clipboard_copy; commandline -f end-selection repaint-mode'
+# bind -M default \x20p 'set -g fish_cursor_end_mode exclusive' forward-char 'set -g fish_cursor_end_mode inclusive' fish_clipboard_paste
+
+set -g ATUIN_COUNTER 0
+function atuin_sync_on_100 --on-event fish_postexec
+    set -g ATUIN_COUNTER (math $ATUIN_COUNTER + 1)
+
+    if test $ATUIN_COUNTER -ge 100
+        if type -q atuin
+            echo (set_color yellow)"󱍢 Reached 100 commands. Syncing with Atuin..."(set_color normal)
+            atuin sync
+            set -g ATUIN_COUNTER 0
+            echo (set_color green)"✔ Sync completed successfully!"(set_color normal)
+        else
+            set -g ATUIN_COUNTER 0
+        end
+    end
+end
 
 # for local_config
 if test -f ~/.config/fish/local_config.fish
