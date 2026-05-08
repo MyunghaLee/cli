@@ -1,22 +1,22 @@
 #!/usr/bin/bash
 
 EGET="$PWD/bin/eget"
-ARCH=$(uname -m)
 
-case "$ARCH" in
-x86_64 | amd64)
-  ARCH="x86_64"
-  ;;
-aarch64 | arm64)
-  ARCH="arm64"
-  ;;
-*)
-  exit 1
-  ;;
-esac
+# ARCH=$(uname -m)
+# case "$ARCH" in
+# x86_64 | amd64)
+#   ARCH="x86_64"
+#   ;;
+# aarch64 | arm64)
+#   ARCH="arm64"
+#   ;;
+# *)
+#   exit 1
+#   ;;
+# esac
 
 if [ ! -f "$PWD/bin/atuin" ]; then
-  $EGET --to $PWD/bin atuinsh/atuin --asset="atuin-x86_64-unknown-linux-musl.tar.gz"
+  $EGET --to $PWD/bin atuinsh/atuin --asset="musl.tar.gz" --asset="^server" --tag="18.16.0"
   echo "------------------------------------------------------------------------------------------------"
 fi
 
@@ -112,10 +112,10 @@ if [ ! -f "$PWD/bin/yazi" ]; then
   echo "------------------------------------------------------------------------------------------------"
 fi
 
-if [ ! -f "$PWD/bin/zellij" ]; then
-  $EGET --to $PWD/bin zellij-org/zellij --asset="zellij-$ARCH-unknown-linux-musl"
-  echo "------------------------------------------------------------------------------------------------"
-fi
+# if [ ! -f "$PWD/bin/zellij" ]; then
+#   $EGET --to $PWD/bin zellij-org/zellij --asset="zellij-$ARCH-unknown-linux-musl"
+#   echo "------------------------------------------------------------------------------------------------"
+# fi
 
 if [ ! -f "$PWD/bin/zoxide" ]; then
   $EGET --to $PWD/bin ajeetdsouza/zoxide --asset="musl"

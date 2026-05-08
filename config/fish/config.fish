@@ -1,10 +1,10 @@
-fish_add_path $HOME/.local/bin
-
 if test -f /home/linuxbrew/.linuxbrew/bin/brew
 	/home/linuxbrew/.linuxbrew/bin/brew shellenv fish | source
 else if test -f $HOME/.homebrew/bin/brew
 	$HOME/.homebrew/bin/brew shellenv fish | source
 end
+
+fish_add_path $HOME/.local/bin
 
 set -l potential_editors nvim vim vi nano
 for editor in $potential_editors
