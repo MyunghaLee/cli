@@ -5,3 +5,6 @@ if [ ! -f "/home/linuxbrew/.linuxbrew/bin/brew" ]; then
 fi
 
 /home/linuxbrew/.linuxbrew/bin/brew bundle
+
+/home/linuxbrew/.linuxbrew/bin/atuin login
+/home/linuxbrew/.linuxbrew/bin/atuin sync

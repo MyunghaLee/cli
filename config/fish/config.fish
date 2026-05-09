@@ -45,21 +45,45 @@ fish_vi_key_bindings
 # bind -M visual \x20y 'fish_clipboard_copy; commandline -f end-selection repaint-mode'
 # bind -M default \x20p 'set -g fish_cursor_end_mode exclusive' forward-char 'set -g fish_cursor_end_mode inclusive' fish_clipboard_paste
 
-set -g ATUIN_COUNTER 0
-function atuin_sync_on_100 --on-event fish_postexec
-    set -g ATUIN_COUNTER (math $ATUIN_COUNTER + 1)
+# set -g ATUIN_COUNTER 0
+# function atuin_sync_on_100 --on-event fish_postexec
+#     set -g ATUIN_COUNTER (math $ATUIN_COUNTER + 1)
+#
+#     if test $ATUIN_COUNTER -ge 100
+#         if type -q atuin
+#             echo (set_color yellow)"󱍢 Reached 100 commands. Syncing with Atuin..."(set_color normal)
+#             atuin sync
+#             set -g ATUIN_COUNTER 0
+#             echo (set_color green)"✔ Sync completed successfully!"(set_color normal)
+#         else
+#             set -g ATUIN_COUNTER 0
+#         end
+#     end
+# end
 
-    if test $ATUIN_COUNTER -ge 100
+set -g ATUIN_COUNTER_FILE "$HOME/.cache/atuin_sync_counter"
+
+function atuin_sync_on_100 --on-event fish_postexec
+    if not test -f "$ATUIN_COUNTER_FILE"
+        mkdir -p "$HOME/.cache"
+        echo 0 > "$ATUIN_COUNTER_FILE"
+    end
+
+    set -l current_count (cat "$ATUIN_COUNTER_FILE")
+    set -l next_count (math $current_count + 1)
+
+    if test "$next_count" -ge 100
         if type -q atuin
-            echo (set_color yellow)"󱍢 Reached 100 commands. Syncing with Atuin..."(set_color normal)
+            echo (set_color yellow)"󱍢 Reached 100 commands across all sessions. Syncing..."(set_color normal)
             atuin sync
-            set -g ATUIN_COUNTER 0
-            echo (set_color green)"✔ Sync completed successfully!"(set_color normal)
-        else
-            set -g ATUIN_COUNTER 0
+            echo (set_color green)"✔ Sync completed!"(set_color normal)
         end
+        echo 0 > "$ATUIN_COUNTER_FILE"
+    else
+        echo "$next_count" > "$ATUIN_COUNTER_FILE"
     end
 end
+
 
 # for local_config
 if test -f ~/.config/fish/local_config.fish
