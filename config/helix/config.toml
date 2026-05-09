@@ -2,23 +2,26 @@ theme = "my-theme"
 
 [editor]
 line-number = "relative"
-mouse = true
-end-of-line-diagnostics = "hint"
+mouse = false
+bufferline = "multiple"
 
 [editor.cursor-shape]
 insert = "bar"
-normal = "block"
-select = "underline"
+# normal = "block"
+# select = "underline"
 
-[editor.file-picker]
-hidden = false
+[keys.normal]
+esc = ["collapse_selection", "keep_primary_selection"]
 
-[editor.lsp]
-display-inlay-hints = true
-display-messages = true
-
-[editor.inline-diagnostics]
-cursor-line = "error"
-
-[editor.soft-wrap]
-enable = true
+# [editor.file-picker]
+# hidden = false
+# 
+# [editor.lsp]
+# display-inlay-hints = true
+# display-messages = true
+# 
+# [editor.inline-diagnostics]
+# cursor-line = "error"
+# 
+# [editor.soft-wrap]
+# enable = true

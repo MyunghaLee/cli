@@ -1,2 +1,9 @@
-inherits = "adwaita-dark"
+inherits = "dark_plus"
+
 "ui.background" = {}
+
+# "ui.statusline" = { bg = "none", fg = "gray" }
+# "ui.statusline.inactive" = { bg = "none", fg = "dark-gray" }
+#
+# "ui.statusline.normal" = { fg = "gray", modifiers = ["bold"] }
+# "ui.statusline.insert" = { fg = "blue" }
