@@ -4,6 +4,7 @@
 
 vim.opt.shell = "fish"
 
+vim.o.clipboard = "unnamedplus"
 vim.g.clipboard = {
   name = "OSC 52",
   copy = {
