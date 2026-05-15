@@ -592,6 +592,36 @@ do
 
   -- Shortcut for searching your Neovim configuration files
   vim.keymap.set('n', '<leader>sn', function() builtin.find_files { cwd = vim.fn.stdpath 'config' } end, { desc = '[S]earch [N]eovim files' })
+
+
+  -- FLASH
+  vim.pack.add { gh 'folke/flash.nvim' }
+
+  require('flash').setup {
+    jump = {
+      autojump = true,
+    },
+    modes = {
+      search = {
+        enabled = true,
+      },
+      char = {
+        jump_labels = true,
+        autohide = true,
+      },
+    },
+  }
+
+  vim.keymap.set({ 'n', 'x', 'o' }, 's', function() require('flash').jump() end,
+    { desc = '[S] Flash Jump' })
+  vim.keymap.set({ 'n', 'x', 'o' }, 'S', function() require('flash').treesitter() end,
+    { desc = '[S] Flash Treesitter' })
+  vim.keymap.set('o', 'r', function() require('flash').remote() end,
+    { desc = '[R] Remote Flash' })
+  vim.keymap.set({ 'o', 'x' }, 'R', function() require('flash').treesitter_search() end,
+    { desc = '[R] Treesitter Search' })
+  vim.keymap.set('c', '<c-s>', function() require('flash').toggle() end,
+    { desc = 'Toggle Flash Search' })
 end
 
 -- ============================================================
@@ -986,7 +1016,7 @@ do
   -- NOTE: You can add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
   --
-  -- require 'custom.plugins'
+  require 'custom.plugins'
 end
 
 -- The line beneath this is called `modeline`. See `:help modeline`
