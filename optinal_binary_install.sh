@@ -124,3 +124,6 @@ fi
 
 mkdir -p $HOME/.local/bin
 ln -sf $PWD/bin/* $HOME/.local/bin
+
+atuin login
+atuin sync
