@@ -123,6 +123,15 @@ do
   --  Remove this option if you want your OS clipboard to remain independent.
   --  See `:help 'clipboard'`
   vim.schedule(function() 
+    vim.o.clipboard = 'unnamedplus'
+
+    local function paste()
+      return {
+        vim.fn.split(vim.fn.getreg(""), "\n"),
+        vim.fn.getregtype(""),
+      }
+    end
+
     vim.g.clipboard = {
       name = 'OSC 52 (copy only)',
       copy = {
@@ -130,11 +139,10 @@ do
         ['*'] = require('vim.ui.clipboard.osc52').copy('*'),
       },
       paste = {
-        ['+'] = function() return nil end,
-        ['*'] = function() return nil end,
+        ['+'] = paste,
+        ['*'] = paste,
       },
     }
-    vim.o.clipboard = 'unnamedplus'
   end)
 
   -- Enable break indent
