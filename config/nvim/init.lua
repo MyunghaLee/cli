@@ -122,21 +122,21 @@ do
   --  Schedule the setting after `UiEnter` because it can increase startup-time.
   --  Remove this option if you want your OS clipboard to remain independent.
   --  See `:help 'clipboard'`
-  vim.schedule(function() 
+  vim.schedule(function()
     vim.o.clipboard = 'unnamedplus'
 
     local function paste()
       return {
-        vim.fn.split(vim.fn.getreg(""), "\n"),
-        vim.fn.getregtype(""),
+        vim.fn.split(vim.fn.getreg '', '\n'),
+        vim.fn.getregtype '',
       }
     end
 
     vim.g.clipboard = {
       name = 'OSC 52 (copy only)',
       copy = {
-        ['+'] = require('vim.ui.clipboard.osc52').copy('+'),
-        ['*'] = require('vim.ui.clipboard.osc52').copy('*'),
+        ['+'] = require('vim.ui.clipboard.osc52').copy '+',
+        ['*'] = require('vim.ui.clipboard.osc52').copy '*',
       },
       paste = {
         ['+'] = paste,
@@ -268,11 +268,10 @@ do
   })
 
   -- TAB SETTINGS
-  vim.opt.tabstop = 2      -- Number of spaces that a <Tab> in the file counts for
-  vim.opt.softtabstop = 2  -- Number of spaces that a <Tab> counts for while performing editing operations
-  vim.opt.shiftwidth = 2   -- Number of spaces to use for each step of (auto)indent
+  vim.opt.tabstop = 2 -- Number of spaces that a <Tab> in the file counts for
+  vim.opt.softtabstop = 2 -- Number of spaces that a <Tab> counts for while performing editing operations
+  vim.opt.shiftwidth = 2 -- Number of spaces to use for each step of (auto)indent
   vim.opt.expandtab = true -- Convert tabs to spaces
-
 end
 
 -- ============================================================
@@ -421,42 +420,42 @@ do
 
   vim.pack.add { gh 'Mofiqul/vscode.nvim' }
   ---@diagnostic disable-next-line: missing-fields
-require('vscode').setup({
-  styles = {
-    -- Alternatively set style in setup
-    -- style = 'light'
+  require('vscode').setup {
+    styles = {
+      -- Alternatively set style in setup
+      -- style = 'light'
 
-    -- Enable transparent background
-    transparent = true,
+      -- Enable transparent background
+      transparent = true,
 
-    -- Enable italic comment
-    italic_comments = true,
+      -- Enable italic comment
+      italic_comments = true,
 
-    -- Enable italic inlay type hints
-    italic_inlayhints = true,
+      -- Enable italic inlay type hints
+      italic_inlayhints = true,
 
-    -- Underline `@markup.link.*` variants
-    underline_links = true,
+      -- Underline `@markup.link.*` variants
+      underline_links = true,
 
-    -- Disable nvim-tree background color
-    disable_nvimtree_bg = true,
+      -- Disable nvim-tree background color
+      disable_nvimtree_bg = true,
 
-    -- Apply theme colors to terminal
-    terminal_colors = true,
+      -- Apply theme colors to terminal
+      terminal_colors = true,
 
-    -- Override colors (see ./lua/vscode/colors.lua)
-    color_overrides = {
+      -- Override colors (see ./lua/vscode/colors.lua)
+      color_overrides = {
         vscLineNumber = '#FFFFFF',
-    },
+      },
 
-    -- Override highlight groups (see ./lua/vscode/theme.lua)
-    group_overrides = {
+      -- Override highlight groups (see ./lua/vscode/theme.lua)
+      group_overrides = {
         -- this supports the same val table as vim.api.nvim_set_hl
         -- use colors from this colorscheme by requiring vscode.colors!
+      },
     },
-  },
-  transparent = true,
-})
+    transparent = false,
+  }
 
   -- Load the colorscheme here.
   -- Like many other themes, this one has different styles, and you could load
@@ -644,7 +643,6 @@ do
   -- Shortcut for searching your Neovim configuration files
   vim.keymap.set('n', '<leader>sn', function() builtin.find_files { cwd = vim.fn.stdpath 'config' } end, { desc = '[S]earch [N]eovim files' })
 
-
   -- FLASH
   vim.pack.add { gh 'folke/flash.nvim' }
 
@@ -663,16 +661,11 @@ do
     },
   }
 
-  vim.keymap.set({ 'n', 'x', 'o' }, 's', function() require('flash').jump() end,
-    { desc = '[S] Flash Jump' })
-  vim.keymap.set({ 'n', 'x', 'o' }, 'S', function() require('flash').treesitter() end,
-    { desc = '[S] Flash Treesitter' })
-  vim.keymap.set('o', 'r', function() require('flash').remote() end,
-    { desc = '[R] Remote Flash' })
-  vim.keymap.set({ 'o', 'x' }, 'R', function() require('flash').treesitter_search() end,
-    { desc = '[R] Treesitter Search' })
-  vim.keymap.set('c', '<c-s>', function() require('flash').toggle() end,
-    { desc = 'Toggle Flash Search' })
+  vim.keymap.set({ 'n', 'x', 'o' }, 's', function() require('flash').jump() end, { desc = '[S] Flash Jump' })
+  vim.keymap.set({ 'n', 'x', 'o' }, 'S', function() require('flash').treesitter() end, { desc = '[S] Flash Treesitter' })
+  vim.keymap.set('o', 'r', function() require('flash').remote() end, { desc = '[R] Remote Flash' })
+  vim.keymap.set({ 'o', 'x' }, 'R', function() require('flash').treesitter_search() end, { desc = '[R] Treesitter Search' })
+  vim.keymap.set('c', '<c-s>', function() require('flash').toggle() end, { desc = 'Toggle Flash Search' })
 end
 
 -- ============================================================
