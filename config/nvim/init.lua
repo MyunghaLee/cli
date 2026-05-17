@@ -454,7 +454,7 @@ do
         -- use colors from this colorscheme by requiring vscode.colors!
       },
     },
-    transparent = false,
+    transparent = true,
   }
 
   -- Load the colorscheme here.
