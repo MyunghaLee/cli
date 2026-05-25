@@ -1,0 +1,2 @@
+-- vim.pack.add{ 'https://github.com/folke/persistence.nvim' }
+-- vim.keymap.set("n", "<leader>p", function() require("persistence").load() end)

@@ -16,7 +16,8 @@ for editor in $potential_editors
 end
 
 if type -q zoxide
-	zoxide init fish --cmd cd | source
+	# zoxide init fish --cmd cd | source
+	zoxide init fish | source
 end
 if type -q starship
 	starship init fish | source
@@ -40,7 +41,7 @@ set -g fish_greeting
 
 set -gx RIPGREP_CONFIG_PATH "$HOME/.config/ripgrep/config"
 
-fish_vi_key_bindings
+# fish_vi_key_bindings
 # bind -M insert ctrl-backspace backward-kill-path-component
 # bind -M visual \x20y 'fish_clipboard_copy; commandline -f end-selection repaint-mode'
 # bind -M default \x20p 'set -g fish_cursor_end_mode exclusive' forward-char 'set -g fish_cursor_end_mode inclusive' fish_clipboard_paste
