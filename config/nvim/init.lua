@@ -139,8 +139,10 @@ do
         ['*'] = require('vim.ui.clipboard.osc52').copy '*',
       },
       paste = {
-        ['+'] = paste,
-        ['*'] = paste,
+        -- ['+'] = paste,
+        -- ['*'] = paste,
+        ['+'] = require('vim.ui.clipboard.osc52').paste '+',
+        ['*'] = require('vim.ui.clipboard.osc52').paste '*',
       },
     }
   end)
@@ -418,49 +420,11 @@ do
     },
   }
 
-  vim.pack.add { gh 'Mofiqul/vscode.nvim' }
-  ---@diagnostic disable-next-line: missing-fields
-  require('vscode').setup {
-    styles = {
-      -- Alternatively set style in setup
-      -- style = 'light'
-
-      -- Enable transparent background
-      transparent = true,
-
-      -- Enable italic comment
-      italic_comments = true,
-
-      -- Enable italic inlay type hints
-      italic_inlayhints = true,
-
-      -- Underline `@markup.link.*` variants
-      underline_links = true,
-
-      -- Disable nvim-tree background color
-      disable_nvimtree_bg = true,
-
-      -- Apply theme colors to terminal
-      terminal_colors = true,
-
-      -- Override colors (see ./lua/vscode/colors.lua)
-      color_overrides = {
-        vscLineNumber = '#FFFFFF',
-      },
-
-      -- Override highlight groups (see ./lua/vscode/theme.lua)
-      group_overrides = {
-        -- this supports the same val table as vim.api.nvim_set_hl
-        -- use colors from this colorscheme by requiring vscode.colors!
-      },
-    },
-    -- transparent = true,
-  }
 
   -- Load the colorscheme here.
   -- Like many other themes, this one has different styles, and you could load
   -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-  vim.cmd.colorscheme 'vscode'
+  -- vim.cmd.colorscheme 'tokyonight-storm'
 
   -- Highlight todo, notes, etc in comments
   vim.pack.add { gh 'folke/todo-comments.nvim' }
@@ -643,29 +607,6 @@ do
   -- Shortcut for searching your Neovim configuration files
   vim.keymap.set('n', '<leader>sn', function() builtin.find_files { cwd = vim.fn.stdpath 'config' } end, { desc = '[S]earch [N]eovim files' })
 
-  -- FLASH
-  vim.pack.add { gh 'folke/flash.nvim' }
-
-  require('flash').setup {
-    jump = {
-      autojump = true,
-    },
-    modes = {
-      search = {
-        enabled = false,
-      },
-      char = {
-        jump_labels = true,
-        autohide = true,
-      },
-    },
-  }
-
-  vim.keymap.set({ 'n', 'x', 'o' }, 's', function() require('flash').jump() end, { desc = '[S] Flash Jump' })
-  vim.keymap.set({ 'n', 'x', 'o' }, 'S', function() require('flash').treesitter() end, { desc = '[S] Flash Treesitter' })
-  vim.keymap.set('o', 'r', function() require('flash').remote() end, { desc = '[R] Remote Flash' })
-  vim.keymap.set({ 'o', 'x' }, 'R', function() require('flash').treesitter_search() end, { desc = '[R] Treesitter Search' })
-  vim.keymap.set('c', '<c-s>', function() require('flash').toggle() end, { desc = 'Toggle Flash Search' })
 end
 
 -- ============================================================
