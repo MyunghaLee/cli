@@ -274,6 +274,10 @@ do
   vim.opt.softtabstop = 2 -- Number of spaces that a <Tab> counts for while performing editing operations
   vim.opt.shiftwidth = 2 -- Number of spaces to use for each step of (auto)indent
   vim.opt.expandtab = true -- Convert tabs to spaces
+
+  -- BUFFER NAVIGATION
+  vim.keymap.set('n', 'H', '<cmd>bp<cr>', { desc = 'Move to the previous buffer' })
+  vim.keymap.set('n', 'L', '<cmd>bn<cr>', { desc = 'Move to the next buffer' })
 end
 
 -- ============================================================
