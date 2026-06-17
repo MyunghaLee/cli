@@ -10,3 +10,5 @@
 [user]
 	email = myhlee02@gmail.com
 	nae = Myungha Lee
+[diff]
+	tool = delta

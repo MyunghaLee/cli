@@ -278,6 +278,11 @@ do
   -- BUFFER NAVIGATION
   vim.keymap.set('n', 'H', '<cmd>bp<cr>', { desc = 'Move to the previous buffer' })
   vim.keymap.set('n', 'L', '<cmd>bn<cr>', { desc = 'Move to the next buffer' })
+
+  -- SAVE
+  vim.keymap.set('n', '<C-s>', ':update<CR>', { silent = true })
+  vim.keymap.set('i', '<C-s>', '<Esc>:update<CR>gi', { silent = true })
+  vim.keymap.set('v', '<C-s>', '<Esc>:update<CR>gv', { silent = true })
 end
 
 -- ============================================================
@@ -719,9 +724,19 @@ do
   --  See `:help lsp-config` for information about keys and how to configure
   ---@type table<string, vim.lsp.Config>
   local servers = {
-    clangd = { },
+    clangd = {},
     -- gopls = {},
     pyright = {},
+    texlab = {
+      settings = {
+        texlab = {
+          chktex = {
+            onOpenAndSave = true, -- 파일을 열거나 저장할 때 린팅 실행 (추천)
+            onEdit = false, -- 타이핑할 때마다 실행하면 무거울 수 있으니 false 추천
+          },
+        },
+      },
+    },
     -- rust_analyzer = {},
     --
     -- Some languages (like typescript) have entire language plugins that can be useful:
