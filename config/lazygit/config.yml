@@ -1,0 +1,24 @@
+# gruvbox-dark
+gui:
+  theme:
+    activeBorderColor:
+      - '#d65d0e' # Orange
+      - bold
+    inactiveBorderColor:
+      - '#a89984' # Gray
+    optionsTextColor:
+      - '#458588' # Blue
+    selectedLineBgColor:
+      - '#3c3836' # Dark Gray background for selection
+    selectedRangeBgColor:
+      - '#3c3836'
+    cherryPickedCommitFgColor:
+      - '#b8bb26' # Green
+    cherryPickedCommitBgColor:
+      - '#458588' # Blue
+    markedBaseCommitFgColor:
+      - '#fabd2f' # Yellow
+    unstagedChangesColor:
+      - '#fb4934' # Bright Red
+    defaultFgColor:
+      - '#ebdbb2' # Light Foreground

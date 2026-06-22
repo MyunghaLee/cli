@@ -262,7 +262,7 @@ web_client {
 //   - true
 //   - false (Default)
 // 
-// simplified_ui true
+simplified_ui true
  
 // Enable OSC8 hyperlink output
 // Options:
@@ -274,7 +274,8 @@ web_client {
 // Choose the theme that is specified in the themes section.
 // Default: default
 // 
-theme "onedark"
+// theme "onedark"
+theme "gruvbox-dark"
  
 // Choose the base input mode of zellij.
 // Default: normal
