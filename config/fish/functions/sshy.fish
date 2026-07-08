@@ -1,3 +1,3 @@
-function sshyz --description 'ssh with yazi'
+function sshy --description 'ssh with yazi'
     ssh $argv -t "bash -l -c 'fish -l -c y'"
 end

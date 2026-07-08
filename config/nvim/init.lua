@@ -283,6 +283,35 @@ do
   vim.keymap.set('n', '<C-s>', ':update<CR>', { silent = true })
   vim.keymap.set('i', '<C-s>', '<Esc>:update<CR>gi', { silent = true })
   vim.keymap.set('v', '<C-s>', '<Esc>:update<CR>gv', { silent = true })
+
+  -- 1. <leader>w 로 현재 버퍼 닫기 (창 분할 유지를 위해 mini.bufremove 활용, 없으면 일반 bdelete)
+  vim.keymap.set('n', '<leader>d', function()
+    local ok, mini_bufremove = pcall(require, 'mini.bufremove')
+    if ok then
+      mini_bufremove.delete(0, false)
+    else
+      vim.cmd 'bdelete'
+    end
+  end, { desc = 'Close Current Buffer' })
+
+  -- 2. 인서트 모드에서 Ctrl + v 로 붙여넣기 (시스템 클립보드 사용)
+  -- * 주의: 네오빔이 시스템 클립보드(+ 레지스터)를 지원하는 환경이어야 합니다.
+  vim.keymap.set('i', '<C-v>', '<C-r>+', { desc = 'Insert Mode Paste' })
+
+  -- 3. 인서트 모드에서 Ctrl + z 로 Undo(되돌리기)
+  -- * 입력 모드를 잠깐 빠져나와 u를 누르고 다시 인서트 모드로 돌아옵니다.
+  vim.keymap.set('i', '<C-z>', '<Cmd>undo<CR>', { desc = 'Insert Mode Undo' })
+
+  -- 4. 노멀/인서트 모드에서 Ctrl + j 누르면 현재 커서 밑으로 빈 줄 추가 (커서 위치 유지)
+  -- * 인서트 모드에서 줄바꿈 후 커서가 내려가는 불편함을 방지합니다.
+  vim.keymap.set({ 'n', 'i' }, '<C-j>', function()
+    local line = vim.api.nvim_win_get_cursor(0)[1]
+    vim.api.nvim_buf_set_lines(0, line, line, false, { '' })
+  end, { desc = 'Add a Blank Line under the Cursor' })
+
+  -- 인서트 모드에서 Ctrl + Backspace 로 단어 단위 삭제 (기본 Ctrl+w 와 동일)
+  vim.keymap.set('i', '<C-H>', '<C-w>', { desc = 'Delete a Word' })
+  vim.keymap.set('i', '<C-BS>', '<C-w>', { desc = 'Delete a Word' })
 end
 
 -- ============================================================
