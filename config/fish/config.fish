@@ -90,3 +90,11 @@ end
 if test -f ~/.config/fish/local_config.fish
     source ~/.config/fish/local_config.fish
 end
+
+if set -q SSH_ASKPASS
+    set -e SSH_ASKPASS
+end
+
+if set -q GIT_ASKPASS
+    set -e GIT_ASKPASS
+end
