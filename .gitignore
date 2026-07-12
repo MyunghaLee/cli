@@ -3,6 +3,8 @@
 /*.tar.gz
 /*.tar.xz
 
+/config/lazygit/state.yml
+
 /config/fish/fish_variables
 /config/fish/local_config.fish
 /config/nvim/lua/custom/plugins/obsidian.lua
