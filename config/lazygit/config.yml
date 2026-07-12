@@ -1,4 +1,5 @@
 # gruvbox-dark
+#
 gui:
   theme:
     activeBorderColor:
@@ -22,3 +23,7 @@ gui:
       - '#fb4934' # Bright Red
     defaultFgColor:
       - '#ebdbb2' # Light Foreground
+git:
+  pagers:
+    - colorArg: "always"
+      pager: "delta --dark --paging=never"
