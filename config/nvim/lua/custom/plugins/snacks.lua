@@ -11,7 +11,7 @@ require("snacks").setup {
   },
   -- 단축키로 호출할 기능들 켜기
   -- picker = { enabled = true },
-  -- explorer = { enabled = true },
+  explorer = { enabled = true },
   -- terminal = { enabled = true },
   -- lazygit = { enabled = true },
   -- notifier = { enabled = true },
