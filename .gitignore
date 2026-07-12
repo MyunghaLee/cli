@@ -1,3 +1,9 @@
 /bin
+/bin_*
+/*.tar.gz
+/*.tar.xz
+
 /config/fish/fish_variables
 /config/fish/local_config.fish
+/config/nvim/lua/custom/plugins/obsidian.lua
+/config/nvim/lua/custom/plugins/im-select.lua
