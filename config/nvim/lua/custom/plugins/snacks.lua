@@ -19,3 +19,6 @@ require("snacks").setup {
   -- words = { enabled = true },
 }
 
+vim.keymap.set("n", "<leader>e", function()
+  require("snacks").explorer()
+end, { desc = "Snacks Explorer" })
