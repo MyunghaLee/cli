@@ -9,5 +9,9 @@
         }
       }
     }
-  }
+  },
+  "plugin": [
+    "opencode-parser"
+  ],
+  "autoupdate" : false
 }
