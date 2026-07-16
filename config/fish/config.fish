@@ -99,4 +99,4 @@ if set -q GIT_ASKPASS
     set -e GIT_ASKPASS
 end
 
-# ~/miniconda/bin/conda shell.fish hook | source
+# ~/miniconda3/bin/conda shell.fish hook | source
