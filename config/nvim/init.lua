@@ -122,30 +122,39 @@ do
   --  Schedule the setting after `UiEnter` because it can increase startup-time.
   --  Remove this option if you want your OS clipboard to remain independent.
   --  See `:help 'clipboard'`
-  vim.schedule(function()
-    vim.o.clipboard = 'unnamedplus'
+  --
+  -- 1) clipboard sync 비활성화
+  vim.opt.clipboard = ""
 
-    local function paste()
-      return {
-        vim.fn.split(vim.fn.getreg '', '\n'),
-        vim.fn.getregtype '',
-      }
-    end
+  -- 2) y / Y만 + 레지스터 사용 (OSC52 연동)
+  -- 'n'과 'v' 모드를 테이블로 묶어 한 번에 매핑합니다.
+  vim.keymap.set({'n', 'v'}, 'y', '"+y')
+  vim.keymap.set({'n', 'v'}, 'Y', '"+Y')
 
-    vim.g.clipboard = {
-      name = 'OSC 52 (copy only)',
-      copy = {
-        ['+'] = require('vim.ui.clipboard.osc52').copy '+',
-        ['*'] = require('vim.ui.clipboard.osc52').copy '*',
-      },
-      paste = {
-        ['+'] = paste,
-        ['*'] = paste,
-        -- ['+'] = require('vim.ui.clipboard.osc52').paste '+',
-        -- ['*'] = require('vim.ui.clipboard.osc52').paste '*',
-      },
-    }
-  end)
+  -- vim.schedule(function()
+  --   vim.o.clipboard = 'unnamedplus'
+  --
+  --   local function paste()
+  --     return {
+  --       vim.fn.split(vim.fn.getreg '', '\n'),
+  --       vim.fn.getregtype '',
+  --     }
+  --   end
+  --
+  --   vim.g.clipboard = {
+  --     name = 'OSC 52 (copy only)',
+  --     copy = {
+  --       ['+'] = require('vim.ui.clipboard.osc52').copy '+',
+  --       ['*'] = require('vim.ui.clipboard.osc52').copy '*',
+  --     },
+  --     paste = {
+  --       ['+'] = paste,
+  --       ['*'] = paste,
+  --       -- ['+'] = require('vim.ui.clipboard.osc52').paste '+',
+  --       -- ['*'] = require('vim.ui.clipboard.osc52').paste '*',
+  --     },
+  --   }
+  -- end)
 
   -- Enable break indent
   vim.o.breakindent = true
