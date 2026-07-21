@@ -20,5 +20,8 @@ require("snacks").setup {
 }
 
 vim.keymap.set("n", "<leader>e", function()
-  require("snacks").explorer()
+  require("snacks").explorer({
+    hidden = true,   -- 숨김 파일 (.으로 시작하는 파일) 표시
+    ignored = true,  -- .gitignore 등에서 무시된 파일 표시
+  })
 end, { desc = "Snacks Explorer" })
